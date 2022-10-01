@@ -62,5 +62,41 @@ def create_tickets(travel:Travel):
         #print(f"objeto - {object_ticket_prem}")
         tickets_premium_economic.append(object_ticket_prem)
     
-
     return tickets_premium_economic
+
+
+# ----- Funcion que retorna los tickets por vuelo -----
+def tickets_per_travel(list_tickets: List[Ticket], code_route):
+    tickets_filtered = [ticket for ticket in list_tickets if ticket.travel.code_route == code_route]
+    return len(tickets_filtered)
+
+
+# --- Funcion que retorna el numero de pasajeros por avion -----
+def tickets_per_plane(list_tickets: List[Ticket], plane_code):
+    tickets_filtered = [ticket for ticket in list_tickets if ticket.travel.plane.code == plane_code]
+    return len(tickets_filtered)
+
+
+# --- Funcion que retorna el avion con mayor pasajeros ---
+def plane_max_passenger(list_tickets: List[Ticket], list_planes: List[Plane]):
+    list_obj = []
+    for i, plane in enumerate(list_planes):
+        number_tickets = tickets_per_plane(list_tickets, plane['code'])
+        tickets_plane = {'number_tickets': number_tickets, 'plane': plane['code']}
+        list_obj.append(tickets_plane)
+    
+    list_ordered = sorted(list_obj, key=lambda d: d['number_tickets'])
+    return list_ordered
+
+
+# ---- Funcion que ordena de mayor a menor el numero de pasajeros por vuelo ----
+def order_list_tickets(list_tickets: List[Ticket], list_travels: List[Travel]):
+    list_obj = []
+    for i, travel in enumerate(list_travels):
+        number_tickets = tickets_per_travel(list_tickets, travel['code_route'])
+        tickets_route = {'number_tickets': number_tickets, 'route': travel['route']}
+        list_obj.append(tickets_route)
+    
+    list_ordered = sorted(list_obj, key=lambda d: d['number_tickets'])
+    return list_ordered
+

@@ -6,15 +6,14 @@ from model.Travel import Travel
 
 class Ticket(object):
 
-    def __init__(self, number:int, travel:Travel, plane: Plane, seat_type:str):
+    def __init__(self, number:int, travel:Travel, seat_type:str):
         self.number = number
         self.travel = travel
-        self.plane = plane
         self.seat_type = seat_type
         self.calculate_amounts()
 
     def __repr__(self) -> str:
-        return self.number
+        return self.seat_type
 
     # falta saber como sabemos si es de ida o vuelta para calcular precio
     def calculate_amounts(self)->None:

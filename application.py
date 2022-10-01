@@ -45,15 +45,38 @@ def main():
 
     # Creamos los tickets de ida y vuelta
     total_tickets = create_list_tickets(outward_travels, return_travels)
+
+    # Numero de tickets Economicos
+    number_eco = len([ticket for ticket in total_tickets if ticket.seat_type == 'economic'])
+
+    # Numero de tickets Premium
+    number_prem = len([ticket for ticket in total_tickets if ticket.seat_type == 'premium'])
+
     
+    print("-------------------------------------------------------")
     
     # Total de pasajes vendidos
-    print(f"Número de pasajes vendidos = {total_tickets}")
+    print(f"Numero de pasajes vendidos al dia: {len(total_tickets)}")
+
     # Total de ingresos por la venta de pasajes economicos
+    total_incomes_eco = round(sum([ticket.total for ticket in total_tickets if ticket.seat_type == 'economic']),2)
+    print(f"Total de ingresos por la venta de pasajes Economicos: ${total_incomes_eco}")
+    
     # Total de ingresos por la venta de pasajes premium
+    total_incomes_prem = round(sum([ticket.total for ticket in total_tickets if ticket.seat_type == 'premium']),2)
+    print(f"Total de ingresos por la venta de pasajes Premium: ${total_incomes_prem}")
+    
     # Total de IGV cobrado
+    total_igv = round(sum([ticket.igv for ticket in total_tickets]),2)
+    print(f"Total de IGV cobrado: ${total_igv}")
+
     # Valor promedio de un pasaje Económico
+    value_avg_eco = round((sum([ticket.total for ticket in total_tickets if ticket.seat_type == 'economic']))/number_eco, 2)
+    print(f"Valor promedio de un pasaje Economico: ${value_avg_eco}")
+
     # Valor promedio de un pasaje Premium
+    value_avg_prem = round((sum([ticket.total for ticket in total_tickets if ticket.seat_type == 'premium']))/number_prem, 2)
+    print(f"Valor promedio de un pasaje Premium: ${value_avg_prem}")
     # Vuelo con mayor cantidad de pasajeros
     # Vuelo con menor cantidad de pasajeros
     # Tres primeros vuelos con mayor ingreso de venta de asiento

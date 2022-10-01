@@ -68,4 +68,5 @@ def create_tickets(travel:Travel):
         #print(f"objeto - {object_ticket_prem}")
         tickets_premium_economic.append(object_ticket_prem)
     
+
     return tickets_premium_economic

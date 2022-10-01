@@ -6,12 +6,6 @@ from model.Ticket import Ticket
 from model.Travel import Travel
 from model.Plane import Plane
 
-# ----- Funcion que da formato en dolares -------------
-def get_currency_format(currency_symbol,amount) -> str:
-    """
-    Método para formatear una variable numérica en string con formato de moneda
-    """
-    return "{}{:,.2f}".format(currency_symbol, amount)
 
 
 # -------------Funcion que crea una lista de aviones ----------------------------------------------------------------

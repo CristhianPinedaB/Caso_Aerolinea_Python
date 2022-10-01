@@ -29,19 +29,15 @@ def create_list_tickets(trips_outward:List[Travel], trips_return:List[Travel])->
 def main():
     # Creamos la lista de aviones
     planes = create_list_planes(planes_data)
-    print(f"aviones --- {planes}")
 
     # Creamos la lista de vuelos de ida (Lima - Provincia)
     outward_travels = create_list_trips_outward(outward_trips, planes)
-    print(f"viajes de ida --- {outward_travels}")
 
     # Creamos la lista de vuelos de retorno (Provincia - Lima)
     return_travels = create_list_trips_return(return_trips, planes)
-    print(f"viajes de retorno --- {return_travels}")
 
     # Unimos los vuelos de ida y de retorno
     total_travels = outward_trips + return_trips
-    print(f"total de viajes --- {len(total_travels)}")
 
     # Creamos los tickets de ida y vuelta
     total_tickets = create_list_tickets(outward_travels, return_travels)
@@ -53,7 +49,7 @@ def main():
     number_prem = len([ticket for ticket in total_tickets if ticket.seat_type == 'premium'])
 
     
-    print("-------------------------------------------------------")
+    print("--------------- REPORTE DIARIO AEROLINEA ----------------")
     
     # Total de pasajes vendidos
     print(f"Numero de pasajes vendidos al dia: {len(total_tickets)}")
@@ -77,6 +73,7 @@ def main():
     # Valor promedio de un pasaje Premium
     value_avg_prem = round((sum([ticket.total for ticket in total_tickets if ticket.seat_type == 'premium']))/number_prem, 2)
     print(f"Valor promedio de un pasaje Premium: ${value_avg_prem}")
+
     # Vuelo con mayor cantidad de pasajeros
     # Vuelo con menor cantidad de pasajeros
     # Tres primeros vuelos con mayor ingreso de venta de asiento
